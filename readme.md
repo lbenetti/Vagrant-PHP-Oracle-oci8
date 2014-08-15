@@ -6,7 +6,7 @@ My personal Vagrant environtment, forked from - [https://github.com/JeffreyWay/V
 Server Info
 =============================
 
-	Server ip: 192.168.50.100
+	Server ip: 192.168.40.100
 	MySQL User: root
 	MySQL Password: root
 	SSH user: vagrant
@@ -22,7 +22,8 @@ What comes in the server
 	Grunt
 	Bower
 	Mailcatcher
-	Oracle Intaclient 12
+	Oracle Indtaclient 12
+	oci8
 
 How to use it
 =============================
@@ -33,7 +34,7 @@ How to use it
 	4. Run vagrant up
 	5. ssh into the machine
 	6. run sudo nano /etc/environment
-	7. add the followin to the file
+	7. add the following to the file
 		# Oracle Instant Client
 		LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 		TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
@@ -51,7 +52,7 @@ You can place each website in the websites directory with their own folder, if y
 
 What about Mailcatcher?
 ============================
-Once provisioned, the server will start mailchacter with the ip 192.168.50.100, to access the web interface, navigate to http://192.168.50.100:1080, configure your app to send email using SMTP to the ip 192.168.50.100 and port 1025, no user, no password.	
+Once provisioned, the server will start mailchacter with the ip 192.168.50.100, to access the web interface, navigate to http://192.168.40.100:1080, configure your app to send email using SMTP to the ip 192.168.40.100 and port 1025, no user, no password.	
 
 
 Thanks goes to the following references:
