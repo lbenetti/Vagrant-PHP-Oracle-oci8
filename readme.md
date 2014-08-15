@@ -22,7 +22,7 @@ What comes in the server
 	Grunt
 	Bower
 	Mailcatcher
-	Oracle Indtaclient 12
+	Oracle Instaclient 12.1
 	oci8
 
 How to use it
@@ -52,7 +52,7 @@ You can place each website in the websites directory with their own folder, if y
 
 What about Mailcatcher?
 ============================
-Once provisioned, the server will start mailchacter with the ip 192.168.50.100, to access the web interface, navigate to http://192.168.40.100:1080, configure your app to send email using SMTP to the ip 192.168.40.100 and port 1025, no user, no password.	
+Once provisioned, the server will start mailchacter with the ip 192.168.40.100, to access the web interface, navigate to http://192.168.40.100:1080, configure your app to send email using SMTP to the ip 192.168.40.100 and port 1025, no user, no password and no encription.
 
 
 Thanks goes to the following references:
@@ -60,4 +60,5 @@ Thanks goes to the following references:
 - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup)
 - [https://gist.github.com/fideloper/7074502](https://gist.github.com/fideloper/7074502)
 - [Setting Up Vagrant With Laravel 4](http://culttt.com/2013/06/17/setting-up-vagrant-with-laravel-4/)
+- [Instaclient script] (https://github.com/eikonomega/oracle_instant_client_for_ubuntu_64bit)
 - [How to Install the Latest Version of PHP 5.5 on Ubuntu](http://www.dev-metal.com/how-to-setup-latest-version-of-php-5-5-on-ubuntu-12-04-lts/)
