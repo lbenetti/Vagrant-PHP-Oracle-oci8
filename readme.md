@@ -43,6 +43,9 @@ How to use it
 	8. Save the file
 	9. run pecl install oci8
 	10. Once it ask you for location of the instaclient just hit enter
+	11. add the following to /etc/php5/apache2/php.ini and /etc/php5/cli/php.ini
+		extension=oci8.so
+	12. Restart apache.	
 	11. You should be good to go.
 
 Where to put the websites?
