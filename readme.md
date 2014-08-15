@@ -22,6 +22,7 @@ What comes in the server
 	Grunt
 	Bower
 	Mailcatcher
+	Oracle Intaclient 12
 
 How to use it
 =============================
@@ -30,7 +31,18 @@ How to use it
 	2. Place the files in the directory of your choice.
 	3. Navigate in your console to that folder
 	4. Run vagrant up
-	5. Enjoy!
+	5. ssh into the machine
+	6. run sudo nano /etc/environment
+	7. add the followin to the file
+		# Oracle Instant Client
+		LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
+		TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
+		ORACLE_BASE="/usr/lib/oracle/12.1/client64"
+		ORACLE_HOME=$ORACLE_BASE'
+	8. Save the file
+	9. run pecl install oci8
+	10. Once it ask you for location of the instaclient just hit enter
+	11. You should be good to go.
 
 Where to put the websites?
 ============================

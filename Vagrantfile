@@ -29,8 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provision :shell, :path => "install.sh"
 
-    #config.vm.provision "puppet"
-
     config.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777", "fmode=666"]
 
     # If true, then any SSH connections made will enable agent forwarding.
