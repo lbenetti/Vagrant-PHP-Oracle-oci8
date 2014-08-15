@@ -46,7 +46,7 @@ How to use it
 	11. add the following to /etc/php5/apache2/php.ini and /etc/php5/cli/php.ini
 		extension=oci8.so
 	12. Restart apache.	
-	11. You should be good to go.
+	13. You should be good to go.
 
 Where to put the websites?
 ============================
