@@ -1,4 +1,4 @@
-PHP development Environment
+PHP development Environment With Oracle instaclient and oci8
 =============================
 
 My personal Vagrant environtment, forked from - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup) with some stuff of my own.
