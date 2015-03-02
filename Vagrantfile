@@ -11,10 +11,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provider :virtualbox do |vb|
 
-        vb.name = "JoseLamp"
+        vb.name = "GSUBLamp"
 
         # Set server memory
-        vb.customize ["modifyvm", :id, "--memory", "1024"]
+        vb.customize ["modifyvm", :id, "--memory", "512"]
 
         # Set the timesync threshold to 10 seconds, instead of the default 20 minutes.
         # If the clock gets more than 15 minutes out of sync (due to your laptop going

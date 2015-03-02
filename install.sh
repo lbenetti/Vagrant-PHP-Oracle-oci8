@@ -13,8 +13,7 @@ echo "--- Installing base packages ---"
 sudo apt-get install -y vim curl python-software-properties
 
 echo "--- Installing PHP-specific packages ---"
-sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt mysql-server-5.5 php5-mysql git-core
-
+sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt mysql-server-5.5 php5-mysql php5-json git
 echo "--- Installing and configuring Xdebug ---"
 sudo apt-get install -y php5-xdebug
 
@@ -38,9 +37,17 @@ sudo ln -fs /vagrant/websites /var/www
 echo "--- What developer codes without errors turned on? Not you, master. ---"
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
-
+sed -i "s/;date.timezone =/date.timezone = Europe\/Madrid/" /etc/php5/apache2/php.ini
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 sed -i 's/html//' /etc/apache2/sites-available/000-default.conf
+
+# Install PhpMyAdmin
+echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/app-password-confirm password root' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/admin-pass password root' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/app-pass password root' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
+apt-get install phpmyadmin -y
 
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
@@ -77,11 +84,25 @@ sudo python /vagrant/oracleinstantclient.py /vagrant/oracle
 echo "---- we now need oci8 ----"
 sudo apt-get install -y php-pear php5-dev
 
-#sudo cat '# Oracle Instant Client
-#LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
-#TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
-#ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-#ORACLE_HOME=$ORACLE_BASE' >> "/etc/environment"
+sudo cat '# Oracle Instant Client
+LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
+TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
+ORACLE_BASE="/usr/lib/oracle/12.1/client64"
+ORACLE_HOME=$ORACLE_BASE' >> "/etc/environment"
 
+echo "--- Creating oci8 extension ---"
+printf "\n" | sudo pecl install oci8
 
-echo "--- All set to go! Would you like to play a game? ---"
+echo "--- Enabling oci8 extension ---"
+sudo cat 'extension=oci8.so' >> "/etc/environment"
+
+echo "--- Configuring tnsnames UB ---"
+sudo cat 'DEFAULT_ADMIN_CONTEXT = ""
+DIRECTORY_SERVERS= (oid1.ub.edu:389:636 , oid2.ub.edu:389:636)
+DIRECTORY_SERVER_TYPE = OID' > "/usr/lib/oracle/12.1/client64/network/admin/ldap.ora"
+sudo cat 'NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)' > "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
+
+echo "--- Restarting Apache ---"
+sudo service apache2 restart
+
+echo "--- Esperem que et funcioni! :) ---"
