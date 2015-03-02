@@ -94,7 +94,9 @@ echo "--- Creating oci8 extension ---"
 printf "\n" | sudo pecl install oci8
 
 echo "--- Enabling oci8 extension ---"
-echo 'extension=oci8.so' | sudo tee -a "/etc/environment"
+echo 'extension=oci8.so' | sudo tee -a "/etc/php5/apache2/php.ini"
+echo 'extension=oci8.so' | sudo tee -a "/etc/php5/cli/php.ini"
+
 
 echo "--- Configuring tnsnames UB ---"
 echo 'DEFAULT_ADMIN_CONTEXT = ""
