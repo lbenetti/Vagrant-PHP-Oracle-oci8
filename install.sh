@@ -84,23 +84,24 @@ sudo python /vagrant/oracleinstantclient.py /vagrant/oracle
 echo "---- we now need oci8 ----"
 sudo apt-get install -y php-pear php5-dev
 
-sudo cat '# Oracle Instant Client
+echo '# Oracle Instant Client
 LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
 ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-ORACLE_HOME=$ORACLE_BASE' >> "/etc/environment"
+ORACLE_HOME=$ORACLE_BASE' | sudo tee -a "/etc/environment"
 
 echo "--- Creating oci8 extension ---"
 printf "\n" | sudo pecl install oci8
 
 echo "--- Enabling oci8 extension ---"
-sudo cat 'extension=oci8.so' >> "/etc/environment"
+echo 'extension=oci8.so' | sudo tee -a "/etc/environment"
 
 echo "--- Configuring tnsnames UB ---"
-sudo cat 'DEFAULT_ADMIN_CONTEXT = ""
+echo 'DEFAULT_ADMIN_CONTEXT = ""
 DIRECTORY_SERVERS= (oid1.ub.edu:389:636 , oid2.ub.edu:389:636)
-DIRECTORY_SERVER_TYPE = OID' > "/usr/lib/oracle/12.1/client64/network/admin/ldap.ora"
-sudo cat 'NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)' > "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
+DIRECTORY_SERVER_TYPE = OID' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/ldap.ora"
+
+echo 'NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
 
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
