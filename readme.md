@@ -1,7 +1,7 @@
 PHP development Environment With Oracle instaclient and oci8
 =============================
 
-My personal Vagrant environtment, forked from - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup) with some stuff of my own.
+Entorn vagrant amb OCI8 i preparat per symfony2 en entorn UB, forked from - [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 
 Server Info
 =============================
@@ -16,14 +16,25 @@ What comes in the server
 =============================
 
 	PHP 5.5
+	Python
+	Vim
+	Curl
 	MySQL 5.5
+	phpmyadmin
 	Node JS
 	Gulp
 	Grunt
 	Bower
+	Git
 	Mailcatcher
 	Oracle Instaclient 12.1
 	oci8
+	php5-mcrypt
+	php5-gd
+	php5-curl
+	php5-xdebug
+	php5-json
+	Composer
 
 How to use it
 =============================
