@@ -1,7 +1,7 @@
 PHP development Environment With Oracle instaclient and oci8
 =============================
 
-My personal Vagrant environtment, forked from - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup) with some stuff of my own.
+Entorn vagrant amb OCI8 i preparat per symfony2 en entorn UB, forked from - [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 
 Server Info
 =============================
@@ -16,14 +16,25 @@ What comes in the server
 =============================
 
 	PHP 5.5
+	Python
+	Vim
+	Curl
 	MySQL 5.5
+	phpmyadmin
 	Node JS
 	Gulp
 	Grunt
 	Bower
+	Git
 	Mailcatcher
 	Oracle Instaclient 12.1
 	oci8
+	php5-mcrypt
+	php5-gd
+	php5-curl
+	php5-xdebug
+	php5-json
+	Composer
 
 How to use it
 =============================
@@ -32,21 +43,8 @@ How to use it
 	2. Place the files in the directory of your choice.
 	3. Navigate in your console to that folder
 	4. Run vagrant up
-	5. ssh into the machine
-	6. run sudo nano /etc/environment
-	7. add the following to the file
-		# Oracle Instant Client
-		LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
-		TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
-		ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-		ORACLE_HOME=$ORACLE_BASE'
-	8. Save the file
-	9. run pecl install oci8
-	10. Once it ask you for location of the instaclient just hit enter
-	11. add the following to /etc/php5/apache2/php.ini and /etc/php5/cli/php.ini
-		extension=oci8.so
-	12. Restart apache.	
-	13. You should be good to go.
+	5. Per defecte es treballa amb NLS_LANG="CATALAN_CATALONIA.AL32UTF8". Si es vol treballar amb ISO8859-15 cal canviar a /etc/enviroment i a /etc/apache2/envvars la variable NLS_LANG per "CATALAN_CATALONIA.WE8ISO8859P15"
+	6. You should be good to go.
 
 Where to put the websites?
 ============================
