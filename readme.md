@@ -32,21 +32,8 @@ How to use it
 	2. Place the files in the directory of your choice.
 	3. Navigate in your console to that folder
 	4. Run vagrant up
-	5. ssh into the machine
-	6. run sudo nano /etc/environment
-	7. add the following to the file
-		# Oracle Instant Client
-		LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
-		TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
-		ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-		ORACLE_HOME=$ORACLE_BASE'
-	8. Save the file
-	9. run pecl install oci8
-	10. Once it ask you for location of the instaclient just hit enter
-	11. add the following to /etc/php5/apache2/php.ini and /etc/php5/cli/php.ini
-		extension=oci8.so
-	12. Restart apache.	
-	13. You should be good to go.
+	5. Per defecte es treballa amb NLS_LANG="CATALAN_CATALONIA.AL32UTF8". Si es vol treballar amb ISO8859-15 cal canviar a /etc/enviroment i a /etc/apache2/envvars la variable NLS_LANG per "CATALAN_CATALONIA.WE8ISO8859P15"
+	6. You should be good to go.
 
 Where to put the websites?
 ============================
