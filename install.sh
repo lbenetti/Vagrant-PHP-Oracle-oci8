@@ -16,14 +16,15 @@ echo "--- Installing base packages ---"
 sudo apt-get install -y vim curl python-software-properties
 
 echo "--- Installing PHP-specific packages ---"
-sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt mysql-server-5.5 php5-mysql php5-json git
+sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt mysql-server-5.5 php5-mysql php5-json php5-intl git
 echo "--- Installing and configuring Xdebug ---"
 sudo apt-get install -y php5-xdebug
 
 cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
-xdebug.scream=1
+xdebug.scream=0
 xdebug.cli_color=1
 xdebug.show_local_vars=1
+xdebug.max_nesting_level
 EOF
 
 echo "--- Enabling mcrypt in all environments ---"
@@ -41,6 +42,7 @@ echo "--- What developer codes without errors turned on? Not you, master. ---"
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 sed -i "s/;date.timezone =/date.timezone = Europe\/Madrid/" /etc/php5/apache2/php.ini
+sed -i "s/;date.timezone =/date.timezone = Europe\/Madrid/" /etc/php5/cli/php.ini
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 sed -i 's/html//' /etc/apache2/sites-available/000-default.conf
 
@@ -87,36 +89,43 @@ sudo python /vagrant/oracleinstantclient.py /vagrant/oracle
 echo "---- we now need oci8 ----"
 sudo apt-get install -y php-pear php5-dev
 
-echo '# Oracle Instant Client
+cat << EOF | sudo tee -a "/etc/environment"
+# Oracle Instant Client
 LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
 ORACLE_BASE="/usr/lib/oracle/12.1/client64"
 ORACLE_HOME=$ORACLE_BASE
 export NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
-' | sudo tee -a "/etc/environment"
+EOF
 
-echo '# Oracle Instant Client
+cat << EOF | sudo tee -a "/etc/apache2/envvars"
+# Oracle Instant Client
 LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
 ORACLE_BASE="/usr/lib/oracle/12.1/client64"
 ORACLE_HOME=$ORACLE_BASE
 export NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
-' | sudo tee -a "/etc/apache2/envvars"
+EOF
 
 echo "--- Creating oci8 extension ---"
 printf "\n" | sudo pecl install oci8
 
-echo "--- Enabling oci8 extension ---"
-echo 'extension=oci8.so' | sudo tee -a "/etc/php5/apache2/php.ini"
-echo 'extension=oci8.so' | sudo tee -a "/etc/php5/cli/php.ini"
 
+echo "--- Enabling oci8 extension ---"
+cat << EOF | sudo tee -a /etc/php5/mods-available/oci8.ini
+extension=oci8.so
+EOF
 
 echo "--- Configuring tnsnames UB ---"
-echo 'DEFAULT_ADMIN_CONTEXT = ""
+cat << EOF | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/ldap.ora"
+DEFAULT_ADMIN_CONTEXT = ""
 DIRECTORY_SERVERS= (oid1.ub.edu:389:636 , oid2.ub.edu:389:636)
-DIRECTORY_SERVER_TYPE = OID' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/ldap.ora"
+DIRECTORY_SERVER_TYPE = OID
+EOF
 
-echo 'NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
+cat << EOF | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
+NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)
+EOF
 
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
