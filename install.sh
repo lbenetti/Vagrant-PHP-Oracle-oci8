@@ -88,7 +88,17 @@ echo '# Oracle Instant Client
 LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
 ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-ORACLE_HOME=$ORACLE_BASE' | sudo tee -a "/etc/environment"
+ORACLE_HOME=$ORACLE_BASE
+export NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
+' | sudo tee -a "/etc/environment"
+
+echo '# Oracle Instant Client
+LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
+TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
+ORACLE_BASE="/usr/lib/oracle/12.1/client64"
+ORACLE_HOME=$ORACLE_BASE
+export NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
+' | sudo tee -a "/etc/apache2/envvars"
 
 echo "--- Creating oci8 extension ---"
 printf "\n" | sudo pecl install oci8
@@ -104,6 +114,9 @@ DIRECTORY_SERVERS= (oid1.ub.edu:389:636 , oid2.ub.edu:389:636)
 DIRECTORY_SERVER_TYPE = OID' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/ldap.ora"
 
 echo 'NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
+
+
+
 
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
