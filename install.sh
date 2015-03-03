@@ -115,10 +115,11 @@ DIRECTORY_SERVER_TYPE = OID' | sudo tee "/usr/lib/oracle/12.1/client64/network/a
 
 echo 'NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)' | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
 
-
-
-
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
+
+echo "--- Installing Composer"
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
 
 echo "--- Esperem que et funcioni! :) ---"
