@@ -127,6 +127,8 @@ cat << EOF | sudo tee "/usr/lib/oracle/12.1/client64/network/admin/sqlnet.ora"
 NAMES.DIRECTORY_PATH= (LDAP, TNSNAMES)
 EOF
 
+sudo php5enmod oci8
+
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
 
