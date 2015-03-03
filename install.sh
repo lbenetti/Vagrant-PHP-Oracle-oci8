@@ -9,6 +9,9 @@ echo "--- MySQL time ---"
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
+echo "--- Installing ACL ---"
+sudo apt-get install acl
+
 echo "--- Installing base packages ---"
 sudo apt-get install -y vim curl python-software-properties
 
