@@ -1,18 +1,21 @@
-PHP development Environment With Oracle instaclient and oci8
+Entorn de desenvolupament PHP amb Oracle instaclient i oci8, preparat per treballar amb Symfony2
 =============================
 
 Entorn vagrant amb OCI8 i preparat per symfony2 en entorn UB, forked from - [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 
-Server Info
+Informació del servidor
 =============================
 
-	Server ip: 192.168.40.100
-	MySQL User: root
-	MySQL Password: root
-	SSH user: vagrant
-	SSH Password: vagrant
+	Ip del servidor: 192.168.40.100
+	Redireccions:
+		22 -> 2222
+		80 -> 8080
+	Usuari MySQL: root
+	Contraseña MySQL: root
+	Usuari SSH: vagrant
+	Contraseña SSH: vagrant
 
-What comes in the server
+Que ve amb el servidor?
 =============================
 
 	PHP 5.5
@@ -36,28 +39,30 @@ What comes in the server
 	php5-json
 	Composer
 
-How to use it
+Instruccions.
 =============================
 
-	1. Download the repo.
-	2. Place the files in the directory of your choice.
-	3. Navigate in your console to that folder
-	4. Run vagrant up
+	1. Descarrega el reposistori.
+	2. Col·loca els fitxers al directori desitjat.
+	3. Navega amb la consola fins el directori on has desat els fitxers.
+	4. Executa `vagrant up`
 	5. Per defecte es treballa amb NLS_LANG="CATALAN_CATALONIA.AL32UTF8". Si es vol treballar amb ISO8859-15 cal canviar a /etc/enviroment i a /etc/apache2/envvars la variable NLS_LANG per "CATALAN_CATALONIA.WE8ISO8859P15"
-	6. You should be good to go.
+	6. Tot t'hauria de funcionar.
+	7. Alerta que no està preparat per fer un --provision, ja que crea entrades duplicades en alguns fitxers de configuració. Cal fer un `vagrant destroy` / `vagrant up`. 
 
-Where to put the websites?
+On col·locar les webs?
 ============================
 
-You can place each website in the websites directory with their own folder, if you want to create virtual hosts for them, you have to do it manually in the server accesing via `vagrant ssh`.
+Pots col·locar les webs al directory "websites" que es comparteix amb la màquina virtual amb el punt de muntatge /vagrant/websites.
+Si vols crear "virtual hosts" ho has de fer manualment accedint per ssh al servidor via `vagrant ssh`.
 
-What about Mailcatcher?
+Què passa amb Mailcather?
 ============================
-Once provisioned, the server will start mailchacter with the ip 192.168.40.100, to access the web interface, navigate to http://192.168.40.100:1080, configure your app to send email using SMTP to the ip 192.168.40.100 and port 1025, no user, no password and no encription.
+Un cop provisionat, el servidor arrenca Mailcatcher amb la IP 192.168.40.100. Per accedir a la interfície web de Mailcatcher s'ha de navegar a http://192.168.40.100:1080. Cal configurar les vostres aplicacions per enviar mitjançant SMTP amb la IP 192.168.40.100 i port 1025, sense usuari, sense password i sense encriptació.
 
 
-Thanks goes to the following references:
-
+Referències:
+- [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup)
 - [https://gist.github.com/fideloper/7074502](https://gist.github.com/fideloper/7074502)
 - [Setting Up Vagrant With Laravel 4](http://culttt.com/2013/06/17/setting-up-vagrant-with-laravel-4/)
