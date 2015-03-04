@@ -42,13 +42,13 @@ Que ve amb el servidor?
 Instruccions.
 =============================
 
-	1. Descarrega el reposistori.
-	2. Col·loca els fitxers al directori desitjat.
-	3. Navega amb la consola fins el directori on has desat els fitxers.
-	4. Executa `vagrant up`
-	5. Per defecte es treballa amb NLS_LANG="CATALAN_CATALONIA.AL32UTF8". Si es vol treballar amb ISO8859-15 cal canviar a /etc/enviroment i a /etc/apache2/envvars la variable NLS_LANG per "CATALAN_CATALONIA.WE8ISO8859P15"
-	6. Tot t'hauria de funcionar.
-	7. Alerta que no està preparat per fer un --provision, ja que crea entrades duplicades en alguns fitxers de configuració. Cal fer un `vagrant destroy` / `vagrant up`. 
+	Descarrega el reposistori.
+	Col·loca els fitxers al directori desitjat.
+	Navega amb la consola fins el directori on has desat els fitxers.
+	Executa `vagrant up`
+	Per defecte es treballa amb NLS_LANG="CATALAN_CATALONIA.AL32UTF8". Si es vol treballar amb ISO8859-15 cal canviar a /etc/enviroment i a /etc/apache2/envvars la variable NLS_LANG per "CATALAN_CATALONIA.WE8ISO8859P15"
+	Tot t'hauria de funcionar.
+	Alerta que no està preparat per fer un --provision, ja que crea entrades duplicades en alguns fitxers de configuració. Cal fer un `vagrant destroy` / `vagrant up`. 
 
 On col·locar les webs?
 ============================
