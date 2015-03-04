@@ -60,8 +60,8 @@ Què passa amb Mailcather?
 ============================
 Un cop provisionat, el servidor arrenca Mailcatcher amb la IP 192.168.40.100. Per accedir a la interfície web de Mailcatcher s'ha de navegar a http://192.168.40.100:1080. Cal configurar les vostres aplicacions per enviar mitjançant SMTP amb la IP 192.168.40.100 i port 1025, sense usuari, sense password i sense encriptació.
 
-
 Referències:
+============================
 - [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup)
 - [https://gist.github.com/fideloper/7074502](https://gist.github.com/fideloper/7074502)
