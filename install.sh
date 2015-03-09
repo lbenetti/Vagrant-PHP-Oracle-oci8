@@ -94,7 +94,7 @@ cat << EOF | sudo tee -a "/etc/environment"
 LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
 ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-ORACLE_HOME="$ORACLE_BASE"
+ORACLE_HOME="\$ORACLE_BASE"
 NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
 EOF
 
@@ -103,7 +103,7 @@ cat << EOF | sudo tee -a "/etc/apache2/envvars"
 export LD_LIBRARY_PATH="/usr/lib/oracle/12.1/client64/lib/"
 export TNS_ADMIN="/usr/lib/oracle/12.1/client64/network/admin"
 export ORACLE_BASE="/usr/lib/oracle/12.1/client64"
-export ORACLE_HOME="$ORACLE_BASE"
+export ORACLE_HOME="\$ORACLE_BASE"
 export NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
 EOF
 
