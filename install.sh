@@ -25,6 +25,11 @@ xdebug.scream=0
 xdebug.cli_color=1
 xdebug.show_local_vars=1
 xdebug.max_nesting_level=250
+xdebug.remote_enable =1
+xdebug.remote_host="localhost"
+xdebug.remote_connect_back=1
+xdebug.remote_handler=dbgp
+xdebug.idekey=ECLIPSE_DBGP
 EOF
 
 echo "--- Enabling mcrypt in all environments ---"
