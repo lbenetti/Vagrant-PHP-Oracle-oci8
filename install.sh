@@ -2,8 +2,14 @@
 
 echo "--- Good morning, master. Let's get to work. Installing now. ---"
 
+echo "--- Afegim els repositoris de JAVA8. ---"
+sudo apt-get install software-properties-common python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
 echo "--- Updating packages list ---"
 sudo apt-get update
+echo "--- Instal·lem JAVA8 ---"
+sudo apt-get install oracle-java8-installer
+
 
 echo "--- MySQL time ---"
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
