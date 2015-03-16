@@ -66,6 +66,10 @@ echo 'phpmyadmin phpmyadmin/mysql/app-pass password root' | debconf-set-selectio
 echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
 apt-get install phpmyadmin -y
 
+echo "--- Canviem l'usuari que executa apache er vagrant:vagrant... Un tema de permisos... ---"
+sed -i "s/export APACHE_RUN_USER= .*/export APACHE_RUN_USER=vagrant/" /etc/apache2/envvars
+sed -i "s/export APACHE_RUN_GROUP= .*/export APACHE_RUN_GROUP=vagrant/" /etc/apache2/envvars
+
 echo "--- Restarting Apache ---"
 sudo service apache2 restart
 
