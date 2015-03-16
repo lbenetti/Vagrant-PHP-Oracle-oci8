@@ -15,7 +15,7 @@ Informació del servidor
 	Usuari SSH: vagrant
 	Contraseña SSH: vagrant
 
-Que ve amb el servidor?
+Què ve amb el servidor?
 =============================
 
 	PHP 5.5
