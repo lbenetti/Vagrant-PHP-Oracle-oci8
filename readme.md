@@ -38,6 +38,7 @@ Que ve amb el servidor?
 	php5-xdebug
 	php5-json
 	Composer
+	Java8
 
 Instruccions
 =============================
