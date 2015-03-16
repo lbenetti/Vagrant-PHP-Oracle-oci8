@@ -3,12 +3,13 @@
 echo "--- Good morning, master. Let's get to work. Installing now. ---"
 
 echo "--- Afegim els repositoris de JAVA8. ---"
-sudo apt-get install software-properties-common python-software-properties
-sudo add-apt-repository ppa:webupd8team/java
-echo "--- Updating packages list ---"
-sudo apt-get update
-echo "--- Instal·lem JAVA8 ---"
-sudo apt-get install oracle-java8-installer
+sudo apt-get install -y software-properties-common python-software-properties
+sudo add-apt-repository -y ppa:webupd8team/java
+apt-get update -qq
+echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections
+apt-get install --yes oracle-java8-installer
+yes "" | apt-get -f install
 
 
 echo "--- MySQL time ---"
