@@ -5,13 +5,14 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "puphpet/ubuntu1404-x64"
+    config.vm.box = "TrustyOfficialx64"
+    config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"	
 
     config.vm.network :private_network, ip: "192.168.40.100"
     config.vm.network "forwarded_port", guest: 80, host: 8080
     config.vm.provider :virtualbox do |vb|
 
-        vb.name = "GSUBLamp"
+        vb.name = "GSUBTrustyOficialLamp"
 
         # Set server memory
         vb.customize ["modifyvm", :id, "--memory", "512"]
