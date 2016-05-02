@@ -124,7 +124,7 @@ export NLS_LANG="CATALAN_CATALONIA.AL32UTF8"
 EOF
 
 echo "--- Creating oci8 extension ---"
-printf "\n" | sudo pecl install oci8
+printf "\n" | sudo pecl install oci8-1.4.10
 
 
 echo "--- Enabling oci8 extension ---"
