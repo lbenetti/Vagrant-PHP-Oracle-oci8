@@ -3,9 +3,9 @@
 echo "--- Good morning, master. Let's get to work. Installing now. ---"
 
 echo "--- Afegim els repositoris de JAVA8. ---"
-sudo apt-get install -y software-properties-common python-software-properties
 sudo add-apt-repository -y ppa:webupd8team/java
 apt-get update -qq
+sudo apt-get install -y software-properties-common python-software-properties
 echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections
 apt-get install --yes oracle-java8-installer
