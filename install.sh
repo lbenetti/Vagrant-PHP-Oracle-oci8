@@ -50,6 +50,7 @@ sudo ln -fs /vagrant/websites /var/www
 echo "--- What developer codes without errors turned on? Not you, master. ---"
 sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 sudo sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
+sudo sed -i "s/short_open_tag = .*/short_open_tag = On/" /etc/php5/apache2/php.ini
 sudo sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php5/apache2/php.ini
 sudo sed -i "s/;date.timezone =/date.timezone = America\/Sao_Paulo/" /etc/php5/cli/php.ini
 sudo sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
