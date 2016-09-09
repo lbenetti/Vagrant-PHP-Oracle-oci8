@@ -2,3 +2,4 @@
 .vagrant
 websites/*
 !websites/index.php
+!websites/info.php

@@ -1,35 +1,28 @@
-Entorn de desenvolupament PHP amb Oracle instaclient i oci8, preparat per treballar amb Symfony2
+Ambiente de desenvolvimento com PHP e Oracle instaclient oci8
 =============================
 
-Entorn vagrant amb OCI8 i preparat per symfony2 en entorn UB, forked from - [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
+Vagrant com OCI8. Forked de [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 
-Informació del servidor
+Informação do servidor
 =============================
 
-	Ip del servidor: 192.168.40.100
-	Redireccions:
+	Ip de servidor: 192.168.40.100
+	Redirecionamentos:
 		22 -> 2222
 		80 -> 8080
-	Usuari MySQL: root
-	Contraseña MySQL: root
-	Usuari SSH: vagrant
-	Contraseña SSH: vagrant
+	Usuario MySQL: root
+	Senha MySQL: root
+	Usuario SSH: vagrant
+	Senha SSH: vagrant
 
-Què ve amb el servidor?
+O que vem com o ambiente?
 =============================
 
 	PHP 5.5
 	Python
 	Vim
 	Curl
-	MySQL 5.5
-	phpmyadmin
-	Node JS
-	Gulp
-	Grunt
-	Bower
 	Git
-	Mailcatcher
 	Oracle Instaclient 12.1
 	oci8
 	php5-mcrypt
@@ -38,34 +31,29 @@ Què ve amb el servidor?
 	php5-xdebug
 	php5-json
 	Composer
-	Java8
 
-Instruccions
+Instruções
 =============================
 
-1. Descarrega el reposistori.
-2. Col·loca els fitxers al directori desitjat.
-3. Navega amb la consola fins el directori on has desat els fitxers.
-4. Executa `vagrant up`
-5. Per defecte es treballa amb NLS_LANG="CATALAN_CATALONIA.AL32UTF8". Si es vol treballar amb ISO8859-15 cal canviar a /etc/enviroment i a /etc/apache2/envvars la variable NLS_LANG per "CATALAN_CATALONIA.WE8ISO8859P1"
-6. Tot t'hauria de funcionar.
-7. Alerta que no està preparat per fer un --provision, ja que crea entrades duplicades en alguns fitxers de configuració. Cal fer un `vagrant destroy` / `vagrant up`. 
+1. Faça o download do repositório.
+2. Coloque os arquivos no diretório que você deseja.
+3. Navegue até o diretório do console onde você salvou os arquivos.
+4. Execute `vagrant up`
+5. Por padrão, o ambiente é configurado com NLS_LANG = "AMERICAN_AMERICA.WE8MSWIN1252." Se você quiser trocar, altere os arquivos /etc/enviroment e /etc/apache2/envvars.
 
-On col·locar les webs?
+Onde colocar os fontes?
 ============================
 
-Pots col·locar les webs al directory "websites" que es comparteix amb la màquina virtual amb el punt de muntatge /vagrant/websites.
-Si vols crear "virtual hosts" ho has de fer manualment accedint per ssh al servidor via `vagrant ssh`.
+Você pode colocar as teias no diretório "websites" que está compartilhada com a máquina virtual com o ponto de montagem /vagrant/websites
+Se você deseja criar "Virtual Hosts", deverá fazer manualmente via `vagrant ssh`.
 
-Què passa amb Mailcather?
+Referências
 ============================
-Un cop provisionat, el servidor arrenca Mailcatcher amb la IP 192.168.40.100. Per accedir a la interfície web de Mailcatcher s'ha de navegar a http://192.168.40.100:1080. Cal configurar les vostres aplicacions per enviar mitjançant SMTP amb la IP 192.168.40.100 i port 1025, sense usuari, sense password i sense encriptació.
-
-Referències:
-============================
+- [https://github.com/vplanas/Vagrant-PHP-Oracle-oci8](vplanas/Vagrant-PHP-Oracle-oci8).
 - [https://github.com/joselfonseca/Vagrant-PHP-Oracle-oci8](joselfonseca/Vagrant-PHP-Oracle-oci8).
 - [https://github.com/JeffreyWay/Vagrant-Setup](JeffreyWay - Vagrant-Setup)
 - [https://gist.github.com/fideloper/7074502](https://gist.github.com/fideloper/7074502)
 - [Setting Up Vagrant With Laravel 4](http://culttt.com/2013/06/17/setting-up-vagrant-with-laravel-4/)
 - [Instaclient script] (https://github.com/eikonomega/oracle_instant_client_for_ubuntu_64bit)
 - [How to Install the Latest Version of PHP 5.5 on Ubuntu](http://www.dev-metal.com/how-to-setup-latest-version-of-php-5-5-on-ubuntu-12-04-lts/)
+
